@@ -19,11 +19,11 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="https://178.210.170.30:8089/MailBox.asmx" Protocol="http" SourceId="1" />
+    <MetadataSource Address="https://127.0.0.1:8089/MailBox.asmx" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="MailBox.disco" MetadataType="Disco" ID="1980f909-267d-4a40-be0d-a1a987f9a36b" SourceId="1" SourceUrl="https://178.210.170.30:8089/MailBox.asmx?disco" />
-    <MetadataFile FileName="MailBox.wsdl" MetadataType="Wsdl" ID="95293276-1f1c-424f-b152-6c7e18920636" SourceId="1" SourceUrl="https://178.210.170.30:8089/MailBox.asmx?wsdl" />
+    <MetadataFile FileName="MailBox.disco" MetadataType="Disco" ID="1980f909-267d-4a40-be0d-a1a987f9a36b" SourceId="1" SourceUrl="https://127.0.0.1:8089/MailBox.asmx?disco" />
+    <MetadataFile FileName="MailBox.wsdl" MetadataType="Wsdl" ID="95293276-1f1c-424f-b152-6c7e18920636" SourceId="1" SourceUrl="https://127.0.0.1:8089/MailBox.asmx?wsdl" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

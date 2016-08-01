@@ -19,11 +19,11 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="https://178.210.170.30:8089/Login.asmx" Protocol="http" SourceId="1" />
+    <MetadataSource Address="https://127.0.0.1:8089/Login.asmx" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="Login.disco" MetadataType="Disco" ID="b513a149-8dc3-4822-9e00-5fcd63c24df4" SourceId="1" SourceUrl="https://178.210.170.30:8089/Login.asmx?disco" />
-    <MetadataFile FileName="Login.wsdl" MetadataType="Wsdl" ID="8a18b4ed-d14e-4da6-998c-f546564dece8" SourceId="1" SourceUrl="https://178.210.170.30:8089/Login.asmx?wsdl" />
+    <MetadataFile FileName="Login.disco" MetadataType="Disco" ID="b513a149-8dc3-4822-9e00-5fcd63c24df4" SourceId="1" SourceUrl="https://127.0.0.1:8089/Login.asmx?disco" />
+    <MetadataFile FileName="Login.wsdl" MetadataType="Wsdl" ID="8a18b4ed-d14e-4da6-998c-f546564dece8" SourceId="1" SourceUrl="https://127.0.0.1:8089/Login.asmx?wsdl" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

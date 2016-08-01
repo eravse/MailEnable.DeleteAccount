@@ -19,11 +19,11 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="https://178.210.170.30:8089/AddressMap.asmx" Protocol="http" SourceId="1" />
+    <MetadataSource Address="https://127.0.0.1:8089/AddressMap.asmx" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="AddressMap.wsdl" MetadataType="Wsdl" ID="cbc2c6e0-662c-451c-99f6-c4b91b4af596" SourceId="1" SourceUrl="https://178.210.170.30:8089/AddressMap.asmx?wsdl" />
-    <MetadataFile FileName="AddressMap.disco" MetadataType="Disco" ID="f774eb7d-0539-4f99-a4a5-d81dd49ee978" SourceId="1" SourceUrl="https://178.210.170.30:8089/AddressMap.asmx?disco" />
+    <MetadataFile FileName="AddressMap.wsdl" MetadataType="Wsdl" ID="cbc2c6e0-662c-451c-99f6-c4b91b4af596" SourceId="1" SourceUrl="https://127.0.0.1:8089/AddressMap.asmx?wsdl" />
+    <MetadataFile FileName="AddressMap.disco" MetadataType="Disco" ID="f774eb7d-0539-4f99-a4a5-d81dd49ee978" SourceId="1" SourceUrl="https://127.0.0.1:8089/AddressMap.asmx?disco" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

@@ -850,10 +850,10 @@
   </wsdl:binding>
   <wsdl:service name="Mailbox">
     <wsdl:port name="MailboxSoap" binding="tns:MailboxSoap">
-      <soap:address location="https://178.210.170.30:8089/MailBox.asmx" />
+      <soap:address location="https://127.0.0.1:8089/MailBox.asmx" />
     </wsdl:port>
     <wsdl:port name="MailboxSoap12" binding="tns:MailboxSoap12">
-      <soap12:address location="https://178.210.170.30:8089/MailBox.asmx" />
+      <soap12:address location="https://127.0.0.1:8089/MailBox.asmx" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>
