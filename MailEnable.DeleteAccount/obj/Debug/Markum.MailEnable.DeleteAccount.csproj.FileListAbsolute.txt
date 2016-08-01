@@ -1,0 +1,5 @@
+C:\Users\erdem.selcuk\Desktop\Markum.MailEnable.DeleteAccount\Markum.MailEnable.DeleteAccount\bin\Debug\Markum.MailEnable.DeleteAccount.exe.config
+C:\Users\erdem.selcuk\Desktop\Markum.MailEnable.DeleteAccount\Markum.MailEnable.DeleteAccount\bin\Debug\Markum.MailEnable.DeleteAccount.exe
+C:\Users\erdem.selcuk\Desktop\Markum.MailEnable.DeleteAccount\Markum.MailEnable.DeleteAccount\bin\Debug\Markum.MailEnable.DeleteAccount.pdb
+C:\Users\erdem.selcuk\Desktop\Markum.MailEnable.DeleteAccount\Markum.MailEnable.DeleteAccount\obj\Debug\Markum.MailEnable.DeleteAccount.exe
+C:\Users\erdem.selcuk\Desktop\Markum.MailEnable.DeleteAccount\Markum.MailEnable.DeleteAccount\obj\Debug\Markum.MailEnable.DeleteAccount.pdb

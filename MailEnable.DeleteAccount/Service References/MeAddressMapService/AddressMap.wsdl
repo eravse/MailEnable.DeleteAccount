@@ -1,0 +1,335 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://mailenable.com/MEWebAdminService/AddressMap" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://mailenable.com/MEWebAdminService/AddressMap" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://mailenable.com/MEWebAdminService/AddressMap">
+      <s:element name="AddAddressMap">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AccountName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="SourceAddress" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="DestinationAddress" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Scope" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Status" type="s:long" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddAddressMapResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="AddAddressMapResult" type="s:long" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAddressMap">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AccountName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="SourceAddress" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Scope" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Status" type="s:long" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAddressMapResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetAddressMapResult" type="s:long" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ListAddressMap">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ObjectList" type="tns:ArrayOfAddressMap" />
+            <s:element minOccurs="0" maxOccurs="1" name="AccountName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="SourceAddress" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="DestinationAddress" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Scope" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Status" type="s:long" />
+            <s:element minOccurs="1" maxOccurs="1" name="Top" type="s:long" />
+            <s:element minOccurs="1" maxOccurs="1" name="MaxLength" type="s:long" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfAddressMap">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="AddressMap" nillable="true" type="tns:AddressMap" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="AddressMap">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:MarshalByRefObject">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="Account" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="SourceAddress" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="DestinationAddress" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="Status" type="s:int" />
+              <s:element minOccurs="0" maxOccurs="1" name="Scope" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Host" type="s:string" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="MarshalByRefObject" abstract="true" />
+      <s:element name="ListAddressMapResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ListAddressMapResult" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="ObjectList" type="tns:ArrayOfAddressMap" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAddressMapObjectProperties">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AccountName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="SourceAddress" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="DestinationAddress" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Scope" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Status" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="ObjectProperties" type="tns:AddressMap" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAddressMapObjectPropertiesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetAddressMapObjectPropertiesResult" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="ObjectProperties" type="tns:AddressMap" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RemoveAddressMap">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AccountName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="SourceAddress" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="DestinationAddress" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Scope" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Status" type="s:long" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RemoveAddressMapResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="RemoveAddressMapResult" type="s:long" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EditAddressMap">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AccountName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="SourceAddress" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="DestinationAddress" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Scope" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Status" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="NewAccountName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="NewSourceAddress" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="NewDestinationAddress" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="NewScope" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="NewStatus" type="s:long" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EditAddressMapResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="EditAddressMapResult" type="s:long" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="AddAddressMapSoapIn">
+    <wsdl:part name="parameters" element="tns:AddAddressMap" />
+  </wsdl:message>
+  <wsdl:message name="AddAddressMapSoapOut">
+    <wsdl:part name="parameters" element="tns:AddAddressMapResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAddressMapSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAddressMap" />
+  </wsdl:message>
+  <wsdl:message name="GetAddressMapSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAddressMapResponse" />
+  </wsdl:message>
+  <wsdl:message name="ListAddressMapSoapIn">
+    <wsdl:part name="parameters" element="tns:ListAddressMap" />
+  </wsdl:message>
+  <wsdl:message name="ListAddressMapSoapOut">
+    <wsdl:part name="parameters" element="tns:ListAddressMapResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAddressMapObjectPropertiesSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAddressMapObjectProperties" />
+  </wsdl:message>
+  <wsdl:message name="GetAddressMapObjectPropertiesSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAddressMapObjectPropertiesResponse" />
+  </wsdl:message>
+  <wsdl:message name="RemoveAddressMapSoapIn">
+    <wsdl:part name="parameters" element="tns:RemoveAddressMap" />
+  </wsdl:message>
+  <wsdl:message name="RemoveAddressMapSoapOut">
+    <wsdl:part name="parameters" element="tns:RemoveAddressMapResponse" />
+  </wsdl:message>
+  <wsdl:message name="EditAddressMapSoapIn">
+    <wsdl:part name="parameters" element="tns:EditAddressMap" />
+  </wsdl:message>
+  <wsdl:message name="EditAddressMapSoapOut">
+    <wsdl:part name="parameters" element="tns:EditAddressMapResponse" />
+  </wsdl:message>
+  <wsdl:portType name="AddressMapSoap">
+    <wsdl:operation name="AddAddressMap">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Add an Address Map.</wsdl:documentation>
+      <wsdl:input message="tns:AddAddressMapSoapIn" />
+      <wsdl:output message="tns:AddAddressMapSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAddressMap">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Retrieve an existing Address Map. Returns 1 if the Address Map exists, otherwise returns 0.</wsdl:documentation>
+      <wsdl:input message="tns:GetAddressMapSoapIn" />
+      <wsdl:output message="tns:GetAddressMapSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ListAddressMap">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns a list of Address Objects. Returns 0 if failure, 1 if complete, 2 if partial return</wsdl:documentation>
+      <wsdl:input message="tns:ListAddressMapSoapIn" />
+      <wsdl:output message="tns:ListAddressMapSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAddressMapObjectProperties">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Retrieves the properties of an existing Address Map. Returns 1 if the Address Map exists, otherwise returns 0.</wsdl:documentation>
+      <wsdl:input message="tns:GetAddressMapObjectPropertiesSoapIn" />
+      <wsdl:output message="tns:GetAddressMapObjectPropertiesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RemoveAddressMap">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Remove an existing Address Map. Returns 1 if the Address Map was successfully removed, otherwise returns 0 if it doesn't exist.</wsdl:documentation>
+      <wsdl:input message="tns:RemoveAddressMapSoapIn" />
+      <wsdl:output message="tns:RemoveAddressMapSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EditAddressMap">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Update an existing Address Map. Returns 1 if the Address Map was successfully updated, otherwise returns 0 if it doesn't exist.</wsdl:documentation>
+      <wsdl:input message="tns:EditAddressMapSoapIn" />
+      <wsdl:output message="tns:EditAddressMapSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="AddressMapSoap" type="tns:AddressMapSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="AddAddressMap">
+      <soap:operation soapAction="http://mailenable.com/MEWebAdminService/AddressMap/AddAddressMap" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAddressMap">
+      <soap:operation soapAction="http://mailenable.com/MEWebAdminService/AddressMap/GetAddressMap" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListAddressMap">
+      <soap:operation soapAction="http://mailenable.com/MEWebAdminService/AddressMap/ListAddressMap" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAddressMapObjectProperties">
+      <soap:operation soapAction="http://mailenable.com/MEWebAdminService/AddressMap/GetAddressMapObjectProperties" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RemoveAddressMap">
+      <soap:operation soapAction="http://mailenable.com/MEWebAdminService/AddressMap/RemoveAddressMap" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EditAddressMap">
+      <soap:operation soapAction="http://mailenable.com/MEWebAdminService/AddressMap/EditAddressMap" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="AddressMapSoap12" type="tns:AddressMapSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="AddAddressMap">
+      <soap12:operation soapAction="http://mailenable.com/MEWebAdminService/AddressMap/AddAddressMap" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAddressMap">
+      <soap12:operation soapAction="http://mailenable.com/MEWebAdminService/AddressMap/GetAddressMap" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListAddressMap">
+      <soap12:operation soapAction="http://mailenable.com/MEWebAdminService/AddressMap/ListAddressMap" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAddressMapObjectProperties">
+      <soap12:operation soapAction="http://mailenable.com/MEWebAdminService/AddressMap/GetAddressMapObjectProperties" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RemoveAddressMap">
+      <soap12:operation soapAction="http://mailenable.com/MEWebAdminService/AddressMap/RemoveAddressMap" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EditAddressMap">
+      <soap12:operation soapAction="http://mailenable.com/MEWebAdminService/AddressMap/EditAddressMap" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="AddressMap">
+    <wsdl:port name="AddressMapSoap" binding="tns:AddressMapSoap">
+      <soap:address location="https://178.210.170.30:8089/AddressMap.asmx" />
+    </wsdl:port>
+    <wsdl:port name="AddressMapSoap12" binding="tns:AddressMapSoap12">
+      <soap12:address location="https://178.210.170.30:8089/AddressMap.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,5 @@
+C:\Bitbucket\MailEnable.DeleteAccount\MailEnable.DeleteAccount\bin\Debug\MailEnable.DeleteAccount.exe.config
+C:\Bitbucket\MailEnable.DeleteAccount\MailEnable.DeleteAccount\bin\Debug\MailEnable.DeleteAccount.exe
+C:\Bitbucket\MailEnable.DeleteAccount\MailEnable.DeleteAccount\bin\Debug\MailEnable.DeleteAccount.pdb
+C:\Bitbucket\MailEnable.DeleteAccount\MailEnable.DeleteAccount\obj\Debug\MailEnable.DeleteAccount.exe
+C:\Bitbucket\MailEnable.DeleteAccount\MailEnable.DeleteAccount\obj\Debug\MailEnable.DeleteAccount.pdb

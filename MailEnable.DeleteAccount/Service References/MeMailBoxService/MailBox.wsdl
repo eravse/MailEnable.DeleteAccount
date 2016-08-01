@@ -1,0 +1,859 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://mailenable.com/MEWebAdminService/Mailbox" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://mailenable.com/MEWebAdminService/Mailbox" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://mailenable.com/MEWebAdminService/Mailbox">
+      <s:element name="AddMailbox">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Postoffice" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="MailboxName" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Status" type="s:long" />
+            <s:element minOccurs="1" maxOccurs="1" name="Limit" type="s:long" />
+            <s:element minOccurs="1" maxOccurs="1" name="RedirectStatus" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="RedirectAddress" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddMailboxResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="AddMailboxResult" type="s:long" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetMailbox">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Postoffice" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="MailboxName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetMailboxResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetMailboxResult" type="s:long" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetMailboxObjectProperties">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Postoffice" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="MailboxName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ObjectProperties" type="tns:Mailbox" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Mailbox">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:MarshalByRefObject">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="Postoffice" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="MailboxName" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="RedirectAddress" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="RedirectStatus" type="s:long" />
+              <s:element minOccurs="1" maxOccurs="1" name="Status" type="s:long" />
+              <s:element minOccurs="1" maxOccurs="1" name="Limit" type="s:long" />
+              <s:element minOccurs="1" maxOccurs="1" name="Size" type="s:long" />
+              <s:element minOccurs="0" maxOccurs="1" name="Host" type="s:string" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="MarshalByRefObject" abstract="true" />
+      <s:element name="GetMailboxObjectPropertiesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetMailboxObjectPropertiesResult" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="ObjectProperties" type="tns:Mailbox" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ListMailbox">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ObjectList" type="tns:ArrayOfMailbox" />
+            <s:element minOccurs="0" maxOccurs="1" name="Postoffice" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Top" type="s:long" />
+            <s:element minOccurs="1" maxOccurs="1" name="MaxLength" type="s:long" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfMailbox">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Mailbox" nillable="true" type="tns:Mailbox" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ListMailboxResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ListMailboxResult" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="ObjectList" type="tns:ArrayOfMailbox" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RemoveMailbox">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Postoffice" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="MailboxName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RemoveMailboxResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="RemoveMailboxResult" type="s:long" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EditMailbox">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Postoffice" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="MailboxName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="NewMailboxName" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="NewStatus" type="s:long" />
+            <s:element minOccurs="1" maxOccurs="1" name="NewSize" type="s:long" />
+            <s:element minOccurs="1" maxOccurs="1" name="NewLimit" type="s:long" />
+            <s:element minOccurs="1" maxOccurs="1" name="NewRedirectStatus" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="NewRedirectAddress" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EditMailboxResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="EditMailboxResult" type="s:long" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAutoResponderContents">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Postoffice" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="MailboxName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAutoResponderContentsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAutoResponderContentsResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAutoResponderStatus">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Postoffice" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="MailboxName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAutoResponderStatusResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetAutoResponderStatusResult" type="s:long" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAutoResponderSubject">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Postoffice" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="MailboxName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAutoResponderSubjectResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAutoResponderSubjectResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAutoSignatureStatus">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Account" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Mailbox" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAutoSignatureStatusResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetAutoSignatureStatusResult" type="s:long" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetQuota">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Postoffice" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="MailboxName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetQuotaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetQuotaResult" type="s:long" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetSignature">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Postoffice" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="MailboxName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetSignatureResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetSignatureResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetSize">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Postoffice" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="MailboxName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetSizeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetSizeResult" type="s:long" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SetAutoResponderContents">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Postoffice" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="MailboxName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Header" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="MessageBody" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SetAutoResponderContentsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="SetAutoResponderContentsResult" type="s:long" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SetAutoResponderDetails">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Postoffice" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="MailboxName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Subject" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="MessageBody" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SetAutoResponderDetailsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="SetAutoResponderDetailsResult" type="s:long" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SetAutoResponderStatus">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Postoffice" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="MailboxName" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Status" type="s:long" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SetAutoResponderStatusResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="SetAutoResponderStatusResult" type="s:long" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SetAutoSignatureStatus">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Account" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="MailboxName" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Status" type="s:long" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SetAutoSignatureStatusResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="SetAutoSignatureStatusResult" type="s:long" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SetSignature">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Postoffice" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="MailboxName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="NewSignature" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SetSignatureResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="SetSignatureResult" type="s:long" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="AddMailboxSoapIn">
+    <wsdl:part name="parameters" element="tns:AddMailbox" />
+  </wsdl:message>
+  <wsdl:message name="AddMailboxSoapOut">
+    <wsdl:part name="parameters" element="tns:AddMailboxResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetMailboxSoapIn">
+    <wsdl:part name="parameters" element="tns:GetMailbox" />
+  </wsdl:message>
+  <wsdl:message name="GetMailboxSoapOut">
+    <wsdl:part name="parameters" element="tns:GetMailboxResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetMailboxObjectPropertiesSoapIn">
+    <wsdl:part name="parameters" element="tns:GetMailboxObjectProperties" />
+  </wsdl:message>
+  <wsdl:message name="GetMailboxObjectPropertiesSoapOut">
+    <wsdl:part name="parameters" element="tns:GetMailboxObjectPropertiesResponse" />
+  </wsdl:message>
+  <wsdl:message name="ListMailboxSoapIn">
+    <wsdl:part name="parameters" element="tns:ListMailbox" />
+  </wsdl:message>
+  <wsdl:message name="ListMailboxSoapOut">
+    <wsdl:part name="parameters" element="tns:ListMailboxResponse" />
+  </wsdl:message>
+  <wsdl:message name="RemoveMailboxSoapIn">
+    <wsdl:part name="parameters" element="tns:RemoveMailbox" />
+  </wsdl:message>
+  <wsdl:message name="RemoveMailboxSoapOut">
+    <wsdl:part name="parameters" element="tns:RemoveMailboxResponse" />
+  </wsdl:message>
+  <wsdl:message name="EditMailboxSoapIn">
+    <wsdl:part name="parameters" element="tns:EditMailbox" />
+  </wsdl:message>
+  <wsdl:message name="EditMailboxSoapOut">
+    <wsdl:part name="parameters" element="tns:EditMailboxResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAutoResponderContentsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAutoResponderContents" />
+  </wsdl:message>
+  <wsdl:message name="GetAutoResponderContentsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAutoResponderContentsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAutoResponderStatusSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAutoResponderStatus" />
+  </wsdl:message>
+  <wsdl:message name="GetAutoResponderStatusSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAutoResponderStatusResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAutoResponderSubjectSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAutoResponderSubject" />
+  </wsdl:message>
+  <wsdl:message name="GetAutoResponderSubjectSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAutoResponderSubjectResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAutoSignatureStatusSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAutoSignatureStatus" />
+  </wsdl:message>
+  <wsdl:message name="GetAutoSignatureStatusSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAutoSignatureStatusResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetQuotaSoapIn">
+    <wsdl:part name="parameters" element="tns:GetQuota" />
+  </wsdl:message>
+  <wsdl:message name="GetQuotaSoapOut">
+    <wsdl:part name="parameters" element="tns:GetQuotaResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetSignatureSoapIn">
+    <wsdl:part name="parameters" element="tns:GetSignature" />
+  </wsdl:message>
+  <wsdl:message name="GetSignatureSoapOut">
+    <wsdl:part name="parameters" element="tns:GetSignatureResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetSizeSoapIn">
+    <wsdl:part name="parameters" element="tns:GetSize" />
+  </wsdl:message>
+  <wsdl:message name="GetSizeSoapOut">
+    <wsdl:part name="parameters" element="tns:GetSizeResponse" />
+  </wsdl:message>
+  <wsdl:message name="SetAutoResponderContentsSoapIn">
+    <wsdl:part name="parameters" element="tns:SetAutoResponderContents" />
+  </wsdl:message>
+  <wsdl:message name="SetAutoResponderContentsSoapOut">
+    <wsdl:part name="parameters" element="tns:SetAutoResponderContentsResponse" />
+  </wsdl:message>
+  <wsdl:message name="SetAutoResponderDetailsSoapIn">
+    <wsdl:part name="parameters" element="tns:SetAutoResponderDetails" />
+  </wsdl:message>
+  <wsdl:message name="SetAutoResponderDetailsSoapOut">
+    <wsdl:part name="parameters" element="tns:SetAutoResponderDetailsResponse" />
+  </wsdl:message>
+  <wsdl:message name="SetAutoResponderStatusSoapIn">
+    <wsdl:part name="parameters" element="tns:SetAutoResponderStatus" />
+  </wsdl:message>
+  <wsdl:message name="SetAutoResponderStatusSoapOut">
+    <wsdl:part name="parameters" element="tns:SetAutoResponderStatusResponse" />
+  </wsdl:message>
+  <wsdl:message name="SetAutoSignatureStatusSoapIn">
+    <wsdl:part name="parameters" element="tns:SetAutoSignatureStatus" />
+  </wsdl:message>
+  <wsdl:message name="SetAutoSignatureStatusSoapOut">
+    <wsdl:part name="parameters" element="tns:SetAutoSignatureStatusResponse" />
+  </wsdl:message>
+  <wsdl:message name="SetSignatureSoapIn">
+    <wsdl:part name="parameters" element="tns:SetSignature" />
+  </wsdl:message>
+  <wsdl:message name="SetSignatureSoapOut">
+    <wsdl:part name="parameters" element="tns:SetSignatureResponse" />
+  </wsdl:message>
+  <wsdl:portType name="MailboxSoap">
+    <wsdl:operation name="AddMailbox">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Add a new Mailbox. A Status value of 1 will enable the Mailbox, while a Status value of 0 will disable it. Returns 1 if the Mailbox was successfully created, otherwise returns 0 if it cannot be created.</wsdl:documentation>
+      <wsdl:input message="tns:AddMailboxSoapIn" />
+      <wsdl:output message="tns:AddMailboxSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMailbox">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get an existing Mailbox. Returns 1 if the Mailbox exists, otherwise returns 0.</wsdl:documentation>
+      <wsdl:input message="tns:GetMailboxSoapIn" />
+      <wsdl:output message="tns:GetMailboxSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMailboxObjectProperties">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Gets the Properties of a Mailbox</wsdl:documentation>
+      <wsdl:input message="tns:GetMailboxObjectPropertiesSoapIn" />
+      <wsdl:output message="tns:GetMailboxObjectPropertiesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ListMailbox">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns a list of Mailbox Objects. Returns 0 if failure, 1 if complete, 2 if partial return</wsdl:documentation>
+      <wsdl:input message="tns:ListMailboxSoapIn" />
+      <wsdl:output message="tns:ListMailboxSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RemoveMailbox">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Remove an existing Mailbox. Returns 1 if the Mailbox was successfully removed, otherwise returns 0.</wsdl:documentation>
+      <wsdl:input message="tns:RemoveMailboxSoapIn" />
+      <wsdl:output message="tns:RemoveMailboxSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EditMailbox">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Edit an existing Mailbox.</wsdl:documentation>
+      <wsdl:input message="tns:EditMailboxSoapIn" />
+      <wsdl:output message="tns:EditMailboxSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAutoResponderContents">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get the Auto Responder contents.</wsdl:documentation>
+      <wsdl:input message="tns:GetAutoResponderContentsSoapIn" />
+      <wsdl:output message="tns:GetAutoResponderContentsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAutoResponderStatus">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get the Auto Responder status. Returns 1 if enabled, otherwise returns 0.</wsdl:documentation>
+      <wsdl:input message="tns:GetAutoResponderStatusSoapIn" />
+      <wsdl:output message="tns:GetAutoResponderStatusSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAutoResponderSubject">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get the Auto Responder subject.</wsdl:documentation>
+      <wsdl:input message="tns:GetAutoResponderSubjectSoapIn" />
+      <wsdl:output message="tns:GetAutoResponderSubjectSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAutoSignatureStatus">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get the Auto Signature status. Returns 1 if enabled, otherwise returns 0.</wsdl:documentation>
+      <wsdl:input message="tns:GetAutoSignatureStatusSoapIn" />
+      <wsdl:output message="tns:GetAutoSignatureStatusSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetQuota">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get the mailbox quota.</wsdl:documentation>
+      <wsdl:input message="tns:GetQuotaSoapIn" />
+      <wsdl:output message="tns:GetQuotaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSignature">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get the signature.</wsdl:documentation>
+      <wsdl:input message="tns:GetSignatureSoapIn" />
+      <wsdl:output message="tns:GetSignatureSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSize">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get the current size of the mailbox.</wsdl:documentation>
+      <wsdl:input message="tns:GetSizeSoapIn" />
+      <wsdl:output message="tns:GetSizeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SetAutoResponderContents">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Set the Auto Responder message.</wsdl:documentation>
+      <wsdl:input message="tns:SetAutoResponderContentsSoapIn" />
+      <wsdl:output message="tns:SetAutoResponderContentsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SetAutoResponderDetails">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Set Basic Auto Responder Details using the Subject and Message Body.</wsdl:documentation>
+      <wsdl:input message="tns:SetAutoResponderDetailsSoapIn" />
+      <wsdl:output message="tns:SetAutoResponderDetailsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SetAutoResponderStatus">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Set the Auto Responder status. A Status value of 1 represents enabled, whilst 0 represents disabled.</wsdl:documentation>
+      <wsdl:input message="tns:SetAutoResponderStatusSoapIn" />
+      <wsdl:output message="tns:SetAutoResponderStatusSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SetAutoSignatureStatus">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Set the Auto Responder status. A Status value of 1 represents enabled, whilst 0 represents disabled.</wsdl:documentation>
+      <wsdl:input message="tns:SetAutoSignatureStatusSoapIn" />
+      <wsdl:output message="tns:SetAutoSignatureStatusSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SetSignature">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Set the signature.</wsdl:documentation>
+      <wsdl:input message="tns:SetSignatureSoapIn" />
+      <wsdl:output message="tns:SetSignatureSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="MailboxSoap" type="tns:MailboxSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="AddMailbox">
+      <soap:operation soapAction="http://mailenable.com/MEWebAdminService/Mailbox/AddMailbox" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMailbox">
+      <soap:operation soapAction="http://mailenable.com/MEWebAdminService/Mailbox/GetMailbox" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMailboxObjectProperties">
+      <soap:operation soapAction="http://mailenable.com/MEWebAdminService/Mailbox/GetMailboxObjectProperties" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListMailbox">
+      <soap:operation soapAction="http://mailenable.com/MEWebAdminService/Mailbox/ListMailbox" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RemoveMailbox">
+      <soap:operation soapAction="http://mailenable.com/MEWebAdminService/Mailbox/RemoveMailbox" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EditMailbox">
+      <soap:operation soapAction="http://mailenable.com/MEWebAdminService/Mailbox/EditMailbox" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAutoResponderContents">
+      <soap:operation soapAction="http://mailenable.com/MEWebAdminService/Mailbox/GetAutoResponderContents" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAutoResponderStatus">
+      <soap:operation soapAction="http://mailenable.com/MEWebAdminService/Mailbox/GetAutoResponderStatus" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAutoResponderSubject">
+      <soap:operation soapAction="http://mailenable.com/MEWebAdminService/Mailbox/GetAutoResponderSubject" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAutoSignatureStatus">
+      <soap:operation soapAction="http://mailenable.com/MEWebAdminService/Mailbox/GetAutoSignatureStatus" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetQuota">
+      <soap:operation soapAction="http://mailenable.com/MEWebAdminService/Mailbox/GetQuota" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSignature">
+      <soap:operation soapAction="http://mailenable.com/MEWebAdminService/Mailbox/GetSignature" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSize">
+      <soap:operation soapAction="http://mailenable.com/MEWebAdminService/Mailbox/GetSize" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetAutoResponderContents">
+      <soap:operation soapAction="http://mailenable.com/MEWebAdminService/Mailbox/SetAutoResponderContents" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetAutoResponderDetails">
+      <soap:operation soapAction="http://mailenable.com/MEWebAdminService/Mailbox/SetAutoResponderDetails" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetAutoResponderStatus">
+      <soap:operation soapAction="http://mailenable.com/MEWebAdminService/Mailbox/SetAutoResponderStatus" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetAutoSignatureStatus">
+      <soap:operation soapAction="http://mailenable.com/MEWebAdminService/Mailbox/SetAutoSignatureStatus" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetSignature">
+      <soap:operation soapAction="http://mailenable.com/MEWebAdminService/Mailbox/SetSignature" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="MailboxSoap12" type="tns:MailboxSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="AddMailbox">
+      <soap12:operation soapAction="http://mailenable.com/MEWebAdminService/Mailbox/AddMailbox" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMailbox">
+      <soap12:operation soapAction="http://mailenable.com/MEWebAdminService/Mailbox/GetMailbox" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMailboxObjectProperties">
+      <soap12:operation soapAction="http://mailenable.com/MEWebAdminService/Mailbox/GetMailboxObjectProperties" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListMailbox">
+      <soap12:operation soapAction="http://mailenable.com/MEWebAdminService/Mailbox/ListMailbox" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RemoveMailbox">
+      <soap12:operation soapAction="http://mailenable.com/MEWebAdminService/Mailbox/RemoveMailbox" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EditMailbox">
+      <soap12:operation soapAction="http://mailenable.com/MEWebAdminService/Mailbox/EditMailbox" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAutoResponderContents">
+      <soap12:operation soapAction="http://mailenable.com/MEWebAdminService/Mailbox/GetAutoResponderContents" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAutoResponderStatus">
+      <soap12:operation soapAction="http://mailenable.com/MEWebAdminService/Mailbox/GetAutoResponderStatus" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAutoResponderSubject">
+      <soap12:operation soapAction="http://mailenable.com/MEWebAdminService/Mailbox/GetAutoResponderSubject" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAutoSignatureStatus">
+      <soap12:operation soapAction="http://mailenable.com/MEWebAdminService/Mailbox/GetAutoSignatureStatus" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetQuota">
+      <soap12:operation soapAction="http://mailenable.com/MEWebAdminService/Mailbox/GetQuota" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSignature">
+      <soap12:operation soapAction="http://mailenable.com/MEWebAdminService/Mailbox/GetSignature" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSize">
+      <soap12:operation soapAction="http://mailenable.com/MEWebAdminService/Mailbox/GetSize" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetAutoResponderContents">
+      <soap12:operation soapAction="http://mailenable.com/MEWebAdminService/Mailbox/SetAutoResponderContents" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetAutoResponderDetails">
+      <soap12:operation soapAction="http://mailenable.com/MEWebAdminService/Mailbox/SetAutoResponderDetails" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetAutoResponderStatus">
+      <soap12:operation soapAction="http://mailenable.com/MEWebAdminService/Mailbox/SetAutoResponderStatus" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetAutoSignatureStatus">
+      <soap12:operation soapAction="http://mailenable.com/MEWebAdminService/Mailbox/SetAutoSignatureStatus" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetSignature">
+      <soap12:operation soapAction="http://mailenable.com/MEWebAdminService/Mailbox/SetSignature" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Mailbox">
+    <wsdl:port name="MailboxSoap" binding="tns:MailboxSoap">
+      <soap:address location="https://178.210.170.30:8089/MailBox.asmx" />
+    </wsdl:port>
+    <wsdl:port name="MailboxSoap12" binding="tns:MailboxSoap12">
+      <soap12:address location="https://178.210.170.30:8089/MailBox.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,327 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://mailenable.com/MEWebAdminService/Login" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://mailenable.com/MEWebAdminService/Login" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://mailenable.com/MEWebAdminService/Login">
+      <s:element name="AddLogin">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PostOffice" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Username" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Status" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="Rights" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddLoginResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="AddLoginResult" type="s:long" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetLogin">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PostOffice" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Username" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetLoginResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetLoginResult" type="s:long" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetLoginObjectProperties">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PostOffice" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Username" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ObjectProperties" type="tns:Login" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Login">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:MarshalByRefObject">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="UserName" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="Status" type="s:long" />
+              <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Account" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="LoginAttempts" type="s:long" />
+              <s:element minOccurs="1" maxOccurs="1" name="LastAttempt" type="s:long" />
+              <s:element minOccurs="1" maxOccurs="1" name="LastSuccessfulLogin" type="s:long" />
+              <s:element minOccurs="0" maxOccurs="1" name="Rights" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Host" type="s:string" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="MarshalByRefObject" abstract="true" />
+      <s:element name="GetLoginObjectPropertiesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetLoginObjectPropertiesResult" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="ObjectProperties" type="tns:Login" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ListLogin">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ObjectList" type="tns:ArrayOfLogin" />
+            <s:element minOccurs="0" maxOccurs="1" name="PostOffice" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Username" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Top" type="s:long" />
+            <s:element minOccurs="1" maxOccurs="1" name="MaxLength" type="s:long" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfLogin">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Login" nillable="true" type="tns:Login" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ListLoginResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ListLoginResult" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="ObjectList" type="tns:ArrayOfLogin" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RemoveLogin">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PostOffice" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Username" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RemoveLoginResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="RemoveLoginResult" type="s:long" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EditLogin">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PostOffice" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Username" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="NewPostOffice" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="NewUsername" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="NewPassword" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="NewStatus" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="NewDescription" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="NewRights" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EditLoginResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="EditLoginResult" type="s:long" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="AddLoginSoapIn">
+    <wsdl:part name="parameters" element="tns:AddLogin" />
+  </wsdl:message>
+  <wsdl:message name="AddLoginSoapOut">
+    <wsdl:part name="parameters" element="tns:AddLoginResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetLoginSoapIn">
+    <wsdl:part name="parameters" element="tns:GetLogin" />
+  </wsdl:message>
+  <wsdl:message name="GetLoginSoapOut">
+    <wsdl:part name="parameters" element="tns:GetLoginResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetLoginObjectPropertiesSoapIn">
+    <wsdl:part name="parameters" element="tns:GetLoginObjectProperties" />
+  </wsdl:message>
+  <wsdl:message name="GetLoginObjectPropertiesSoapOut">
+    <wsdl:part name="parameters" element="tns:GetLoginObjectPropertiesResponse" />
+  </wsdl:message>
+  <wsdl:message name="ListLoginSoapIn">
+    <wsdl:part name="parameters" element="tns:ListLogin" />
+  </wsdl:message>
+  <wsdl:message name="ListLoginSoapOut">
+    <wsdl:part name="parameters" element="tns:ListLoginResponse" />
+  </wsdl:message>
+  <wsdl:message name="RemoveLoginSoapIn">
+    <wsdl:part name="parameters" element="tns:RemoveLogin" />
+  </wsdl:message>
+  <wsdl:message name="RemoveLoginSoapOut">
+    <wsdl:part name="parameters" element="tns:RemoveLoginResponse" />
+  </wsdl:message>
+  <wsdl:message name="EditLoginSoapIn">
+    <wsdl:part name="parameters" element="tns:EditLogin" />
+  </wsdl:message>
+  <wsdl:message name="EditLoginSoapOut">
+    <wsdl:part name="parameters" element="tns:EditLoginResponse" />
+  </wsdl:message>
+  <wsdl:portType name="LoginSoap">
+    <wsdl:operation name="AddLogin">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Add a new Login. Returns 1 if the Login was successfully added, otherwise returns 0 if it already exists.</wsdl:documentation>
+      <wsdl:input message="tns:AddLoginSoapIn" />
+      <wsdl:output message="tns:AddLoginSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLogin">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Retrieve an existing Login. Returns 1 if the Login exists, otherwise returns 0.</wsdl:documentation>
+      <wsdl:input message="tns:GetLoginSoapIn" />
+      <wsdl:output message="tns:GetLoginSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLoginObjectProperties">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Gets the Properties of a Login</wsdl:documentation>
+      <wsdl:input message="tns:GetLoginObjectPropertiesSoapIn" />
+      <wsdl:output message="tns:GetLoginObjectPropertiesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ListLogin">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns a list of Login Objects. Returns 0 if failure, 1 if complete, 2 if partial return</wsdl:documentation>
+      <wsdl:input message="tns:ListLoginSoapIn" />
+      <wsdl:output message="tns:ListLoginSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RemoveLogin">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Remove an existing Login. Returns 1 if the Login was successfully removed, otherwise returns 0.</wsdl:documentation>
+      <wsdl:input message="tns:RemoveLoginSoapIn" />
+      <wsdl:output message="tns:RemoveLoginSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EditLogin">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Update an existing Login. Returns 1 if the Login was successfully updated, otherwise returns 0.</wsdl:documentation>
+      <wsdl:input message="tns:EditLoginSoapIn" />
+      <wsdl:output message="tns:EditLoginSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="LoginSoap" type="tns:LoginSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="AddLogin">
+      <soap:operation soapAction="http://mailenable.com/MEWebAdminService/Login/AddLogin" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLogin">
+      <soap:operation soapAction="http://mailenable.com/MEWebAdminService/Login/GetLogin" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLoginObjectProperties">
+      <soap:operation soapAction="http://mailenable.com/MEWebAdminService/Login/GetLoginObjectProperties" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListLogin">
+      <soap:operation soapAction="http://mailenable.com/MEWebAdminService/Login/ListLogin" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RemoveLogin">
+      <soap:operation soapAction="http://mailenable.com/MEWebAdminService/Login/RemoveLogin" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EditLogin">
+      <soap:operation soapAction="http://mailenable.com/MEWebAdminService/Login/EditLogin" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="LoginSoap12" type="tns:LoginSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="AddLogin">
+      <soap12:operation soapAction="http://mailenable.com/MEWebAdminService/Login/AddLogin" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLogin">
+      <soap12:operation soapAction="http://mailenable.com/MEWebAdminService/Login/GetLogin" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLoginObjectProperties">
+      <soap12:operation soapAction="http://mailenable.com/MEWebAdminService/Login/GetLoginObjectProperties" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListLogin">
+      <soap12:operation soapAction="http://mailenable.com/MEWebAdminService/Login/ListLogin" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RemoveLogin">
+      <soap12:operation soapAction="http://mailenable.com/MEWebAdminService/Login/RemoveLogin" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EditLogin">
+      <soap12:operation soapAction="http://mailenable.com/MEWebAdminService/Login/EditLogin" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Login">
+    <wsdl:port name="LoginSoap" binding="tns:LoginSoap">
+      <soap:address location="https://178.210.170.30:8089/Login.asmx" />
+    </wsdl:port>
+    <wsdl:port name="LoginSoap12" binding="tns:LoginSoap12">
+      <soap12:address location="https://178.210.170.30:8089/Login.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
