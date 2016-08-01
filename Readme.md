@@ -20,6 +20,4 @@ App.config içerisinden lütfen MailEnable Web Servis adreslerini değiştiriniz
 
 # İletişim
 
-Erdem Avni SELÇUK
-
-eravse@gmail.com
+Erdem Avni SELÇUK  eravse@gmail.com  |  Ziya Okan Özbey ziyaozbeyy@gmail.com
