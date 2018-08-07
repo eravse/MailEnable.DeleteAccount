@@ -1,23 +1,22 @@
 # MailEnable.DeleteAccount
 
-Basit ve kullanışlı bu araç MailEnable üzerindeki web servisleri kullanarak verilen listedeki kullanılmayan domain lerinizi MailEnable Üzerinden siler.
+This simple and useful tool removes unused domains from MailEnable at the given list using web services on MailEnable.
 
-Silme işleminde Tab ve Sav dosyalarının içerisinden de silme yapar. 
+Deletion also deletes from within the Tab and Sav files.
 
-MailBox ve buna ağlı klasör
-Login 
-AdresMap silme işlemini yapar. 
+The MailBox and the folder connected to it will delete the Login AddressMap.
 
-# Gereksinimler
 
-Toolu kullanmak için MailEnable Web Servislerinin aktif olarak çalışıyor olması gerekmektedir. 
-.Net programın çalışacağı sunucuda yüklü olmalıdır. 
+# Requirements
 
-#Konfigurasyon
+To use the tool, MailEnable Web Services must be actively running.
+DotNet should be installed on the server to run the program.
 
-App.config içerisinden lütfen MailEnable Web Servis adreslerini değiştiriniz.
+# Configuration
+
+Please change the MailEnable Web Service addresses in App.config.
 
 
 # İletişim
 
-Erdem Avni SELÇUK  eravse@gmail.com  |  Ziya Okan Özbey ziyaozbeyy@gmail.com
+Erdem Avni SELÇUK  eravse@gmail.com 
