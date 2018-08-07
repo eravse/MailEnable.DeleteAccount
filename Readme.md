@@ -17,6 +17,6 @@ DotNet should be installed on the server to run the program.
 Please change the MailEnable Web Service addresses in App.config.
 
 
-# İletişim
+# Contact
 
 Erdem Avni SELÇUK  eravse@gmail.com 
